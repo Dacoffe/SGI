@@ -1,0 +1,50 @@
+Logo tipo estranho
+Simbolo descarregar app no topo mais destacado
+
+Redundante modificar dados/as minhas encomendas antes de estar registado
+Podia ter mais opções de quantidade de compras de itens
+O butao para selecionar as linguagens devia ter as linguagens no pais de origem
+
+A secção profissionais podia ser mais clara sobre as condições e na sua função 
+
+Os filtros podia ter seleção direta dos preços e descontos.
+
+A iniciar sessão e criar conta deveria indicar exemplo de email, não so dizer o email é inválido.
+
+( print )Na pagina de profissionais, no mail b2b@redoute.pt aparenta ser clickable
+até muda o cursor, mas não deixa clicar e pode induzir em erro.
+
+Na seleção de pais na criação de conta por alguma razão 
+Liechtenstein esta a minúscula enquanto os países todos estão a maisculo.
+
+Na seleção de numero da morada aceita caracteres especiais além 
+de º ª e até 40 caracteres. Tal como andar, porta.
+
+Não há necessiadae de o cod postal conseguir escrever mais de 4 digitos.
+
+Na criação de conta consegui meter só r no campo da rua.
+
+Quando está a perguntar se tenho filhos o site não me deixa
+meter data de nasscimento maior que 18 anos.
+
+Quando clico no apple store no Windows reenvia-me para a versão 
+francesa do site e não para a linguagem de escolha , só na parte de baixo.
+
+Na listas de artigos favoritos poderia ter mais filtros de ordenacao 
+como os artigos metidos na lista mais recentemente. 
+
+( print )Poderia haver um botao para meter os artigos de uma lista no carrinho de uma só vez .
+
+O site indicou me que também posso pagar por google pay, mas não indica como. 
+
+( print ) O site não me deixa cancelar uma encomenda que eu fiz por multibanco
+e continuou a deixar meter morada como Ru. Deveria ter um botão para parar a encomenda
+só podes cancelar no serviço de apoio de cliente.
+
+
+Na página de esqueci-me da palavra passe as palavras “Se não se recorda do seu endereço de e-mail
+contacte o707 20 10 10 (De 2ª a 6ª feira das 9h às 18h00).” Contacte o707.
+
+
+( print ) Ao mudar de país 'Arabia Saudita' o site não muda a forma de leitura para da direita para a esquerda
+a interface mantem se da esquerda para direita
