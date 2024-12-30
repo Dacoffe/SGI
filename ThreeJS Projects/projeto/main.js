@@ -20,8 +20,8 @@ function resetarControles() {
   document.getElementById('btn_changeModel').selectedIndex = 0; // Reseta para o valor padrão (opção 2)
 
   // Resetando os controles deslizantes (se houver)
-  document.getElementById('intensidadeLuz').value = 0;  // Intensity slider reset to default
-  document.getElementById('corLuz').value = "#ffff00";  // Color picker reset to default
+  document.getElementById('intensidadeLuz').value = 0; 
+  document.getElementById('corLuz').value = "#ffff00"; 
 
   // Resetando o menu de loop para a opção padrão (Repetir)
   document.getElementById('menu_loop').selectedIndex = 1;  // Reseta para a opção "Repetir"
@@ -52,10 +52,6 @@ controlos.enablePan = false;
 
 renderer.render( cena, camara )
 
-//let grelha = new THREE.GridHelper() 
-
-//cena.add( grelha )
-
 let delta = 0; // tempo desde a última atualização
 let relogio = new THREE.Clock()
 let latencia_minima = 1 / 60; // tempo mínimo entre cada atualização
@@ -64,7 +60,7 @@ let misturador = new THREE.AnimationMixer(cena)
 
 function animar() 
 { 
-  requestAnimationFrame( animar ) 
+  requestAnimationFrame(animar) 
 
   delta += relogio.getDelta() 
   
@@ -73,10 +69,7 @@ function animar()
   
   misturador.update(Math.floor(delta / latencia_minima)* latencia_minima)
     
-  renderer.render( cena, camara ) 
-
-  
-
+  renderer.render( cena, camara )
   delta = delta % latencia_minima
 }
 
@@ -96,47 +89,33 @@ function carregarModelo(caminhoModelo) {
   }
 
 carregador.load( 
-  
   caminhoModelo,
   function ( gltf ) 
   { 
-    modeloAtual = gltf.scene;
-
-
-        
+    modeloAtual = gltf.scene; 
     cena.add(modeloAtual);
-
 
     // Remover animações anteriores
     misturador = new THREE.AnimationMixer(modeloAtual); 
 
     const lightBulb = modeloAtual.getObjectByName('S_LightBulb');
     if (lightBulb) {
-        bulbLight = new THREE.PointLight('yellow', 0, 1); // Luz amarela, intensidade 10, alcance 10
-        bulbLight.position.set(0, 0.8, 0); // Altere a posição, se necessário
-        lightBulb.add(bulbLight);
+      bulbLight = new THREE.PointLight('yellow', 0, 1); // Luz amarela, intensidade 0, alcance 1
+      bulbLight.position.set(0, 0, 0); // posição lampada
+      lightBulb.add(bulbLight);
+      spotLight = new THREE.SpotLight('yellow', 0, 100, Math.PI / 6);
+      // Posicionando a luz no centro do objeto
+      spotLight.position.set(0, -0.6, 0); // Posição no centro local do lightBulb
 
-       
+      // Direcionando a luz na direção do eixo Y positivo
+      spotLight.target.position.set(0, 10, 0); // Alvo em direção ao eixo Y positivo (ajuste conforme necessário)
+      
+      // Adicionando o alvo da luz como filho do lightBulb
+      lightBulb.add(spotLight.target);
 
-       spotLight = new THREE.SpotLight('yellow', 0, 100, Math.PI / 6); // Cor branca, intensidade 5, alcance 20, ângulo de 30° (PI/6)
-    
-    // Posicionando a luz no centro do objeto
-    spotLight.position.set(0, -0.6, 0); // Posição no centro local do lightBulb
-
-    // Direcionando a luz na direção do eixo Y positivo
-    spotLight.target.position.set(0, 10, 0); // Alvo em direção ao eixo Y positivo (ajuste conforme necessário)
-    
-    // Adicionando o alvo da luz como filho do lightBulb
-    lightBulb.add(spotLight.target);
-
-    // Adicionando a luz ao objeto lightBulb
-    lightBulb.add(spotLight);
-
-    
-
-    console.log('SpotLight adicionada ao objeto "S_LightBulb".');
-
-        
+      // Adicionando a luz ao objeto lightBulb
+      lightBulb.add(spotLight);
+      console.log('SpotLight adicionada ao objeto "S_LightBulb".');    
     } else {
         console.warn('Objeto "S_LightBulb" não encontrado no modelo.');
     }
@@ -245,7 +224,7 @@ carregarModelo('A.glb');
 
 
 // Atualizar a intensidade da luz
-document.getElementById('intensidadeLuz').addEventListener('input', (event) => {
+document.getElementById('intensidadeLuz').addEventListener('input', (event) => { // vai bu
   const intensidade = event.target.value;
   if (bulbLight) {
     bulbLight.intensity = intensidade / 10; // Ajusta a intensidade da luz (ajustando o valor)
@@ -295,14 +274,8 @@ cena.add( luzPonto )
 
 const luzDirecional = new THREE.DirectionalLight( "white" );
 luzDirecional.position.set( 3, 2, 0 ); //aponta na direção de (0, 0, 0)
-luzDirecional.intensity= 1
+luzDirecional.intensity= 1;
 cena.add( luzDirecional );
-
-
-
-//Function to change texture
-
-
 
 
 console.log(cena);
