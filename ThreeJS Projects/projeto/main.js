@@ -217,9 +217,6 @@ document.getElementById('btn_changeModel').addEventListener('change', () => {
   }
 });
 
-
-
-
 carregarModelo('A.glb');
 
 
@@ -273,7 +270,7 @@ cena.add( luzPonto )
 
 
 const luzDirecional = new THREE.DirectionalLight( "white" );
-luzDirecional.position.set( 3, 2, 0 ); //aponta na direção de (0, 0, 0)
+luzDirecional.position.set( 0, 2, 0 ); //aponta na direção de (0, 0, 0)
 luzDirecional.intensity= 1;
 cena.add( luzDirecional );
 
