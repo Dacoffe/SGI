@@ -1,9 +1,7 @@
 import * as THREE from 'three'; 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-//MUDAR VARIAVEIS E COMENTARIOS
 
-//MUDAR VARIAVEIS E COMENTARIOS
 let cena = new THREE.Scene() 
 
 //Reset nas opcoes de animação, no modelo default e nas opções de luz para que não fiquem as mesmas opções quando há refresh da página
@@ -18,9 +16,8 @@ function resetarOpcoes() {
   document.getElementById('btn_changeModel').selectedIndex = 0; 
 
   resetarLuzes();
-
-   
 }
+
 function resetarLuzes(){
   document.getElementById('intensidadeLuz').value = 0;  
   document.getElementById('corLuz').value = "#ffff00"; 
@@ -54,8 +51,6 @@ controlos.enableDamping = true;
 controlos.dampingFactor = 0.1;
 controlos.enablePan = false;
 
-
-
 let delta = 0; // tempo desde a última atualização
 let relogio = new THREE.Clock()
 let latencia_minima = 1 / 60; // tempo mínimo entre cada atualização
@@ -65,16 +60,11 @@ let misturador = new THREE.AnimationMixer(cena)
 function animar() 
 { 
   requestAnimationFrame( animar ) 
-
   delta += relogio.getDelta() 
-  
   if (delta < latencia_minima) 
     return; 
-  
   misturador.update(Math.floor(delta / latencia_minima)* latencia_minima)
-    
   renderer.render( cena, camara ) 
-
   delta = delta % latencia_minima
 }
 
@@ -199,7 +189,6 @@ carregador.load(
       });
     };
 
-
     // Selecionar loop da animação
     document.getElementById('menu_loop').onchange = (event) => {
       let selectedLoopMode;
@@ -242,7 +231,7 @@ console.log('Modelo carregado:', caminhoModelo);
 }
 
 //muda o modelo com abajures diferentes
-document.getElementById('btn_changeModel').addEventListener('change', () => {
+document.getElementById('btn_changeModel').addEventListener('change', (event) => {
   const valorModelo = parseInt(event.target.value);
   switch (valorModelo) {
     case 1:
@@ -307,9 +296,6 @@ luzPontoAmbiente.castShadow = true
 //resolução das sombras
 luzPontoAmbiente.shadow.mapSize.width = 2048;
 luzPontoAmbiente.shadow.mapSize.height = 2048;
-//limite de distância de renderização de sombras
-luzPontoAmbiente.shadow.camera.near = 0.5;
-luzPontoAmbiente.shadow.camera.far = 500;
 cena.add( luzPontoAmbiente ) 
 
 //cria uma luz direcional
@@ -324,9 +310,7 @@ luzSpotAmbiente.position.set(0, 8, 3);
 luzSpotAmbiente.target.position.set(0, -8, 3);
 luzSpotAmbiente.castShadow = true;
 luzSpotAmbiente.shadow.mapSize.width = 2048;
-luzSpotAmbiente.shadow.mapSize.height = 2048;
-luzSpotAmbiente.shadow.camera.near = 0.5; 
-luzSpotAmbiente.shadow.camera.far = 200; 
+luzSpotAmbiente.shadow.mapSize.height = 2048; 
 cena.add( luzSpotAmbiente.target);
 cena.add( luzSpotAmbiente);
 
